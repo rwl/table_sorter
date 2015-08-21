@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>example</title>
+  </head>
+  <body>   
+    <table border="1" id="sortableTable">
+    <thead>
+      <th>Name</th><th>Age</th>
+    </thead>
+    <tbody>
+      <tr><td>John</td><td>20</td></tr>
+      <tr><td>Jim</td><td>51</td></tr>
+      <tr><td>Amy</td><td>40</td></tr>
+      <tr><td>Malcolm</td><td>60</td></tr>      
+    </tbody>
+    </table>
+    <script type="application/dart">
+import "package:table_sorter/table_sorter.dart";
+
+void main() {
+  new TableSorter.select("#sortableTable")..enable = true;
+}
+    </script>
+    <script src="packages/browser/dart.js"></script>
+  </body>
+</html>

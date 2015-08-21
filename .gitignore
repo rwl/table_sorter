@@ -1,0 +1,10 @@
+out/
+packages
+pubspec.lock
+.pub/
+
+.idea/
+*.iml
+
+.project
+/.settings/

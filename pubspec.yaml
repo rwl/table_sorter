@@ -1,0 +1,11 @@
+name: table_sorter
+version: 2.0.0
+authors:
+- Bogdan Taranu <dystopian.heaven@gmail.com>
+- Richard Lincoln <r.w.lincoln@gmail.com>
+description: Add sorting to HTML tables
+homepage: https://github.com/rwl/table_sorter
+dependencies:
+  browser: '>=0.10.0+2 <0.11.0'
+dev_dependencies:
+  test: '>=0.12.4+5 <0.13.0'

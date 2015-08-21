@@ -53,20 +53,19 @@ class TableSorter {
   /// Enables/Disables sorting for the selected table.
   void set enable(bool isEnabled) {
     if (isEnabled) {
-      _table.tHead.rows[0].cells.forEach(_addLink);
+      _table.tHead.rows[0].cells.forEach(_addWrapper);
     } else {
       _table.tHead.innerHtml = _originalHeaders;
     }
   }
 
-  /// Adds a link for `<th>` cells.
-  void _addLink(TableCellElement cell) {
-    var anchor = new AnchorElement()
-      ..href = "#"
+  /// Adds a wrapper element around the text of a `<th>` cell.
+  void _addWrapper(TableCellElement cell) {
+    var elem = new DivElement()
       ..text = cell.text
       ..onClick.listen(_sortTable);
     cell.children.clear();
-    cell.append(anchor);
+    cell.append(elem);
   }
 
   /// Sort the table according to the selected cell key.

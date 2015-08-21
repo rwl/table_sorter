@@ -11,19 +11,19 @@ tableSorterTest() {
   });
 
   group("enable", () {
-    test("add links to table headers", () {
+    test("add wrappers to table headers", () {
       var sorter = new TableSorter.select("#projectTable");
       sorter.enable = true;
-      var hasLinks = new RegExp(
-          '<tr><th><a href="#">Name</a></th><th><a href="#">Age</a></th>');
+      var hasLinks =
+          new RegExp('<tr><th><div>Name</div></th><th><div>Age</div></th>');
       var result = sorter.table.outerHtml.contains(hasLinks);
       sorter.enable = false;
       expect(result, isTrue);
     });
-    test("remove links", () {
+    test("remove wrappers", () {
       var noLinks = '<tr><th>Name</th><th>Age</th>';
-      var hasLinks = new RegExp(
-          '<tr><th><a href="#">Name</a></th><th><a href="#">Age</a></th>');
+      var hasLinks =
+          new RegExp('<tr><th><div>Name</div></th><th><div>Age</div></th>');
       var sorter = new TableSorter.select("#projectTable");
       sorter.table.tHead.innerHtml = noLinks;
 

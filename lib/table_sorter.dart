@@ -72,15 +72,17 @@ class TableSorter {
   void _sortTable(Event e) {
     _sortingKeyCellId =
         ((e.target as Element).parent as TableCellElement).cellIndex;
+    var tbody = _table.tBodies.first;
     List<TableRowElement> rowsList;
-    if (!_isAlreadySorted(_table.tBodies[0].rows)) {
-      rowsList = _table.tBodies[0].rows.toList(growable: false);
+    if (!_isAlreadySorted(tbody.rows)) {
+      rowsList = tbody.rows.toList(growable: false);
       rowsList.sort(_compareRows);
     } else {
-      rowsList = _table.tBodies[0].rows.reversed.toList(growable: false);
+      rowsList = tbody.rows.reversed.toList(growable: false);
     }
-    _table.tBodies[0].innerHtml = "";
-    _table.tBodies[0].innerHtml = _getRowsNewHtml(rowsList);
+    for (var row in rowsList) {
+      tbody.insertBefore(row, null);
+    }
   }
 
   /// Used for comparing two table rows.
@@ -112,14 +114,5 @@ class TableSorter {
       }
     }
     return true;
-  }
-
-  /// Transforms a list of [TableRowElement] into HTML.
-  String _getRowsNewHtml(List<TableRowElement> rows) {
-    var html = new StringBuffer();
-    for (var row in rows) {
-      html.write(row.outerHtml);
-    }
-    return html.toString();
   }
 }
